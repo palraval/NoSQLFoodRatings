@@ -20,21 +20,21 @@ An instance of MongoClient is created, the "uk_food" database is assigned to a v
 
 
 
-1. Which establishments have a Hygiene score of 20? 
+**1. Which establishments have a Hygiene score of 20?** 
 
 A query is made where "scores.Hygiene" is equal to 20. The number of documents that fit this criteria are found to be 41 and the first document is printed. All the results that fit this query are converted into a DataFrame called "result_df", which shows the amount of rows in this DataFrame and the first ten rows.
 
 
 
 
-2. Which establishments in London have a RatingValue greater than or equal to 4? 
+**2. Which establishments in London have a RatingValue greater than or equal to 4?** 
 
 A query is constructed that contains the value "London" for "LocalAuthorityName" and values for "RatingValue" that are greater than or equal to 4. The number of documents that fit this criteria is found to be 33 and the first document is printed. All the results that fulfill this criteria are converted to a DataFrame titled "london_dataframe". The number of rows in this DataFrame is found and the first ten rows are shown.
 
 
 
 
-3. What are the top 5 establishments with a RatingValue of 5, sorted by lowest to highest Hygiene scoer, nearest to the newly added restaurant ("Penang Flavours")?
+**3. What are the top 5 establishments with a RatingValue of 5, sorted by lowest to highest Hygiene scoer, nearest to the newly added restaurant ("Penang Flavours")?**
 
 
 The longitude and latitude values for the "Penang Flavours" is found by querying for the restaurant's name and extracting the coordinates' values. Another query is created which has longitude and latitude values of within a radius of 0.01 from the "Penang Flavours" coordinates and "RatingValue" of exactly 5. The sort is set according to the Hygiene scores in ascending order. Finally, a limit is set to 5 to get the top 5 results. The data from the "establishments" collection that fulfills all this criteria is found and printed. These 5 results are converted to a DataFrame named "coordinates_results" and shown.
@@ -42,7 +42,7 @@ The longitude and latitude values for the "Penang Flavours" is found by querying
 
 
 
-4. How many establishements in each Local Authority area have a Hygiene score of 0?
+**4. How many establishements in each Local Authority area have a Hygiene score of 0?**
 
 
 For this question, a pipeline is constructed with 3 elements. The first element is called "match_query" and it only gives data that has a Hygiene score of 0. The second element is called "group_query". This seperates each unique value within "LocalAuthorityName" and provides the total count of each value. The third element is named "sort_values", which sorts the count in descending order. The "establishments" collection is aggregated according to this pipeline. The number of documents in this results is found to be 55 and the first ten results are printed. All 55 results are converted into a DataFrame titled "pipeline_df'. The number of rows in this DataFrame is calculated and the first ten rows are displayed. 
